@@ -1,25 +1,21 @@
-import angular from 'angular';
+import angular from "angular";
+import uiRouter from "@uirouter/angularjs";
 
-import '../style/app.css';
+import config from './app.config.js';
 
-let app = () => {
-  return {
-    template: require('./app.html'),
-    controller: 'AppCtrl',
-    controllerAs: 'app'
-  }
-};
+import 'angular-animate';
+import 'angular-aria';
+import 'angular-messages';
+import ngMaterial from 'angular-material';
 
-class AppCtrl {
-  constructor() {
-    this.url = 'https://github.com/preboot/angular-webpack';
-  }
-}
+import Root from './components/root/root.component';
 
-const MODULE_NAME = 'app';
 
-angular.module(MODULE_NAME, [])
-  .directive('app', app)
-  .controller('AppCtrl', AppCtrl);
+const MODULE_NAME = "app";
 
-export default MODULE_NAME;
+angular
+  .module("app", [uiRouter, ngMaterial, Root])
+  .config(config);
+
+
+  export default MODULE_NAME;
